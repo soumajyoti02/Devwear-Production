@@ -4,7 +4,6 @@ import connectDb from "@/middleware/mongoose"
 import jsonwebtoken from "jsonwebtoken"
 
 var CryptoJS = require("crypto-js");
-// import nodemailer from 'nodemailer';
 const sgMail = require('@sendgrid/mail')
 
 var jwt = require('jsonwebtoken');
@@ -34,7 +33,6 @@ const handler = async (req, res) => {
                     token: token,
                 })
                 await forget.save()
-                // console.log(token) // To be removed. [PENDING]
 
                 let email = `Dear ${user.name},
 
@@ -58,28 +56,6 @@ Soumajyoti
 Founder & CEO
 Devwear.com
 `
-
-                // const sendResetLink = async () => {
-                //     const transporter = nodemailer.createTransport({
-                //         host: 'smtp.gmail.com',
-                //         port: 587,
-                //         secure: false,
-                //         requireTLS: true,
-                //         auth: {
-                //             user: 'soumyabwn3@gmail.com',
-                //             pass: 'kuwxqxcbinnlhxbr',
-                //         },
-                //     });
-                //     let message = {
-                //         from: 'soumyabwn3@gmail.com',
-                //         to: user.email,
-                //         subject: ' Important: Reset Your Password',
-                //         text: email,
-                //     };
-
-                //     await transporter.sendMail(message)
-                // }
-                // sendResetLink()
 
                 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
                 let msg = {
