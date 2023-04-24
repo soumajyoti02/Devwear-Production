@@ -76,13 +76,26 @@ Devwear.com
                         text: email,
                     };
 
-                    let info = transporter.sendMail(message, function (error, information) {
-                        if (error) {
-                            console.log(error)
-                        }
-                        else {
-                            console.log('Message sent successfully as %s', info.messageId);
-                        }
+                    // let info = transporter.sendMail(message, function (error, information) {
+                    //     if (error) {
+                    //         console.log(error)
+                    //     }
+                    //     else {
+                    //         console.log('Message sent successfully as %s', info.messageId);
+                    //     }
+                    // });
+
+                    await new Promise((resolve, reject) => {
+                        // send mail
+                        transporter.sendMail(message, (err, info) => {
+                            if (err) {
+                                console.error(err);
+                                reject(err);
+                            } else {
+                                console.log(info);
+                                resolve(info);
+                            }
+                        });
                     });
                 }
                 sendResetLink()
