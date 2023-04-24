@@ -83,7 +83,7 @@ Devwear.com
 
                 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
                 let msg = {
-                    to: 'soumajyoti12@gmail.com',
+                    to: user.email,
                     from: 'soumyabwn3@gmail.com',
                     subject: ' Important: Reset Your Password',
                     text: email,
