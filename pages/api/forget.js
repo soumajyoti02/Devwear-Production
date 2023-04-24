@@ -4,7 +4,8 @@ import connectDb from "@/middleware/mongoose"
 import jsonwebtoken from "jsonwebtoken"
 
 var CryptoJS = require("crypto-js");
-import nodemailer from 'nodemailer';
+// import nodemailer from 'nodemailer';
+const sgMail = require('@sendgrid/mail')
 
 var jwt = require('jsonwebtoken');
 
@@ -58,39 +59,43 @@ Founder & CEO
 Devwear.com
 `
 
-                const sendResetLink = async () => {
-                    const transporter = nodemailer.createTransport({
-                        host: 'smtp.gmail.com',
-                        port: 587,
-                        secure: false,
-                        requireTLS: true,
-                        auth: {
-                            user: 'soumyabwn3@gmail.com',
-                            pass: 'kuwxqxcbinnlhxbr',
-                        },
-                    });
-                    let message = {
-                        from: 'soumyabwn3@gmail.com',
-                        to: user.email,
-                        subject: ' Important: Reset Your Password',
-                        text: email,
-                    };
+                // const sendResetLink = async () => {
+                //     const transporter = nodemailer.createTransport({
+                //         host: 'smtp.gmail.com',
+                //         port: 587,
+                //         secure: false,
+                //         requireTLS: true,
+                //         auth: {
+                //             user: 'soumyabwn3@gmail.com',
+                //             pass: 'kuwxqxcbinnlhxbr',
+                //         },
+                //     });
+                //     let message = {
+                //         from: 'soumyabwn3@gmail.com',
+                //         to: user.email,
+                //         subject: ' Important: Reset Your Password',
+                //         text: email,
+                //     };
 
-                    // let info = transporter.sendMail(message, function (error, information) {
-                    //     if (error) {
-                    //         console.log(error)
-                    //     }
-                    //     else {
-                    //         console.log('Message sent successfully as %s', info.messageId);
-                    //     }
-                    // });
+                //     await transporter.sendMail(message)
+                // }
+                // sendResetLink()
 
-                    const sendMessage = async (message) => {
-                        await transporter.sendMail(message)
-                    }
-                    await sendMessage(message)
-                }
-                sendResetLink()
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                let msg = {
+                    to: 'soumajyoti12@gmail.com',
+                    from: 'soumyabwn3@gmail.com',
+                    subject: ' Important: Reset Your Password',
+                    text: email,
+                };
+                sgMail
+                    .send(msg)
+                    .then(() => {
+                        console.log('Email sent')
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
             }
 
             res.status(200).json({ success: true })
