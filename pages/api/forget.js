@@ -85,18 +85,10 @@ Devwear.com
                     //     }
                     // });
 
-                    await new Promise((resolve, reject) => {
-                        // send mail
-                        transporter.sendMail(message, (err, info) => {
-                            if (err) {
-                                console.error(err);
-                                reject(err);
-                            } else {
-                                console.log(info);
-                                resolve(info);
-                            }
-                        });
-                    });
+                    const sendMessage = async (message) => {
+                        await transporter.sendMail(message)
+                    }
+                    await sendMessage('your message')
                 }
                 sendResetLink()
             }
