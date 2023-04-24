@@ -88,7 +88,7 @@ Devwear.com
                     const sendMessage = async (message) => {
                         await transporter.sendMail(message)
                     }
-                    await sendMessage('your message')
+                    await sendMessage(message)
                 }
                 sendResetLink()
             }
