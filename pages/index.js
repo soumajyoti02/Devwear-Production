@@ -3,8 +3,44 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Carousel from '@/components/Carousel'
+import cardstyle from '../styles/card.module.css'
+
 
 const inter = Inter({ subsets: ['latin'] })
+
+const slides = [
+  "/banner1.jpg",
+  "/banner5.jpg",
+  "/banner8.jpg",
+
+]
+const slidesSm = [
+  "/offer1.jpg",
+  "/offer2.jpg",
+  "/offer3.jpg",
+  "/offer4.jpg",
+  "/offer5.jpg",
+]
+
+const offerPicTshirt = [
+  "/tshirt1.jpg",
+  "/tshirt2.jpg",
+  "/tshirt3.jpg",
+  "/tshirt4.jpg",
+]
+const offerPicHood = [
+  "/hood1.jpg",
+  "/hood2.jpg",
+]
+const offerPicMug = [
+  "/mug1.jpg",
+  "/mug2.jpg",
+]
+const offerPicSticker = [
+  "/s1.jpg",
+  "/s2.jpg",
+]
 
 export default function Home() {
   return (
@@ -18,91 +54,120 @@ export default function Home() {
         <title>DevWear - Styled in Code</title>
       </Head>
       <main className="">
-        <div>
-          <img src="/banner.jpg" alt="cover Photo" className='w-screen h-[60vh]' />
+        <div className="top-slider">
+          <div className="lg:block hidden w-screen h-[70vh] ">
+            <Carousel>
+              {slides.map((s) => {
+                return <img key={s} src={s} alt='image' className='w-screen h-[70vh]' />
+              })}
+            </Carousel>
+          </div>
+          <div className="lg:hidden block max-w-screen-2xl lg:h-[50vh] ">
+            <Carousel>
+              {slidesSm.map((s) => {
+                return <Image key={s} src={s} alt='image' className='h-[50vh]' width={1300} height={200} />
+              })}
+            </Carousel>
+          </div>
         </div>
 
-
-        <section className="text-gray-600 body-font">
-          <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-              <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Shop the Hottest Trends and Styles on DevWear.com!</h1>
-              <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">Experience fashion that is both trendy and tech-inspired on Styled in Code - your ultimate online shopping destination.</p>
+        <div className="brand mt-5 bg-slate-100 w-screen">
+          <div className="brand bg-slate-100 max-h-[40vh] flex flex-wrap justify-center md:justify-evenly items-center space-x-7 pt-8 md:pt-12 opacity-60">
+            <div className="w-[29%] lg:w-[10%]  cursor-pointer flex justify-center items-center">
+              <img src="./brand1.png" alt="" className=' w-[70%] md:w-full' />
             </div>
-            <div className="flex flex-wrap -m-4">
-              <div className="xl:w-1/3 md:w-1/2 p-4">
-                <div className="border border-gray-200 p-6 rounded-lg">
-                  <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                  </div>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Shooting Stars</h2>
-                  <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.</p>
-                </div>
-              </div>
-              <div className="xl:w-1/3 md:w-1/2 p-4">
-                <div className="border border-gray-200 p-6 rounded-lg">
-                  <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                      <circle cx="6" cy="6" r="3"></circle>
-                      <circle cx="6" cy="18" r="3"></circle>
-                      <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                    </svg>
-                  </div>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-2">The Catalyzer</h2>
-                  <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.</p>
-                </div>
-              </div>
-              <div className="xl:w-1/3 md:w-1/2 p-4">
-                <div className="border border-gray-200 p-6 rounded-lg">
-                  <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                  </div>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Neptune</h2>
-                  <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.</p>
-                </div>
-              </div>
-              <div className="xl:w-1/3 md:w-1/2 p-4">
-                <div className="border border-gray-200 p-6 rounded-lg">
-                  <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"></path>
-                    </svg>
-                  </div>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Melanchole</h2>
-                  <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.</p>
-                </div>
-              </div>
-              <div className="xl:w-1/3 md:w-1/2 p-4">
-                <div className="border border-gray-200 p-6 rounded-lg">
-                  <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-                  </div>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Bunker</h2>
-                  <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.</p>
-                </div>
-              </div>
-              <div className="xl:w-1/3 md:w-1/2 p-4">
-                <div className="border border-gray-200 p-6 rounded-lg">
-                  <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                  </div>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Ramona Falls</h2>
-                  <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.</p>
-                </div>
-              </div>
+            <div className="w-[29%] lg:w-[10%] cursor-pointer flex justify-center items-center">
+              <img src="./brand2.png" alt="" className='  w-[70%] md:w-full' />
+            </div>
+            <div className="w-[29%] lg:w-[10%] cursor-pointer flex justify-center items-center">
+              <img src="./brand3.png" alt="" className=' w-[70%] md:w-full mr-7 md:mr-0' />
+            </div>
+            <div className="w-[29%] lg:w-[10%] cursor-pointer flex justify-center items-center">
+              <img src="./brand4.png" alt="" className=' w-[70%] md:w-full mr-7 md:mr-0' />
+            </div>
+          </div>
+        </div>
+
+        <section className="offer_section h-full  bg-slate-50 w-screen mt-5">
+          <div className="flex flex-col md:flex-row flex-wrap md:w-[90%] gap-5 justify-center md:justify-evenly items-center md:m-auto">
+            <div className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
+              <img src="/downoffer1.jpg" alt="" />
+            </div>
+            <div className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
+              <img src="/downoffer2.jpg" alt="" />
+            </div>
+            <div className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
+              <img src="/downoffer3.jpg" alt="" />
             </div>
           </div>
         </section>
 
+        <section className="featured_products mt-5 bg-slate-100 flex justify-evenly items-center flex-wrap">
+          <h1 className="text-2xl md:text-4xl font-bold font-sans mt-14">Featured Products</h1>
+          <div className="w-screen flex justify-center items-center">
+            <span className="w-[140px] md:w-[180px] h-[0.10rem] bg-blue-900 mt-4"></span>
+          </div>
+          <div className="flex justify-evenly items-center flex-wrap w-[93%] space-y-4 mt-6 md:gap-10">
+
+
+            {offerPicTshirt.map((pic) => {
+              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+                <div className={`${cardstyle.card_image} overflow-hidden `}>
+                  <img src={`${pic}`} alt="" className='bg-cover' />
+                </div>
+                <div className={`${cardstyle.category}`}> TShirt </div>
+                <div className={`${cardstyle.heading}`}> Get noticed in this must-have TShirt!
+                </div>
+              </div>
+
+            })}
+            {offerPicHood.map((pic) => {
+              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+                <div className={`${cardstyle.card_image} overflow-hidden `}>
+                  <img src={`${pic}`} alt="" className='bg-cover' />
+                </div>
+                <div className={`${cardstyle.category}`}> Hoodie </div>
+                <div className={`${cardstyle.heading}`}> Get noticed in this must-have Hoodie!
+                </div>
+              </div>
+
+            })}
+            {offerPicMug.map((pic) => {
+              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+                <div className={`${cardstyle.card_image} overflow-hidden `}>
+                  <img src={`${pic}`} alt="" className='bg-cover' />
+                </div>
+                <div className={`${cardstyle.category}`}> Mugs </div>
+                <div className={`${cardstyle.heading}`}> Get noticed in this must-have Mugs!
+                </div>
+              </div>
+
+            })}
+            {offerPicSticker.map((pic) => {
+              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+                <div className={`${cardstyle.card_image} overflow-hidden `}>
+                  <img src={`${pic}`} alt="" className='bg-cover' />
+                </div>
+                <div className={`${cardstyle.category}`}> Stickers </div>
+                <div className={`${cardstyle.heading}`}> Get noticed in this must-have Sticker!
+                </div>
+              </div>
+
+            })}
+
+          </div>
+        </section>
+
+        <section className="down_Offer_Section w-screen bg-slate-100 mb-10">
+          <div className="w-[90%] m-auto pt-10 ">
+            <div className="md:hidden block rounded-3xl overflow-hidden">
+              <img src="/downoffer5.jpg" alt="" className='h-[30vh]' />
+            </div>
+            <div className="md:block hidden rounded-3xl overflow-hidden">
+              <img src="/b3.jpg" alt="" className='w-screen' />
+            </div>
+          </div>
+        </section>
 
       </main>
     </>
