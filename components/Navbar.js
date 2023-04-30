@@ -134,7 +134,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
             {/* SIDE CART */}
 
-            <div ref={ref} className={`sideCart z-20 h-[100vh] w-80 absolute overflow-y-scroll top-0 bg-gray-200 p-10 transform transition-transform ${sidebar ? 'right-0' : 'hidden'} shadow-2xl`}>
+            <div ref={ref} className={`sideCart z-20 h-[100vh] w-[21.5rem] absolute overflow-y-scroll top-0 bg-gray-200 p-10 transform transition-transform ${sidebar ? 'right-0' : 'hidden'} shadow-2xl`}>
                 <h2 className="font-bold text-xl">Shopping Cart</h2>
                 {/* Underline */}
                 <div className="w-1/2 h-[1px] bg-black mt-[10px] ml-[8px]">
@@ -183,7 +183,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                             <BsFillBagCheckFill className='m-1' />
                             CheckOut</button>
                     </Link>
-                    <button disabled={Object.keys(cart).length === 0} onClick={clearCart} className="disabled:bg-gray-300 flex mx-2 text-white bg-gray-800 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-gray-900 rounded text-sm">
+                    <button disabled={Object.keys(cart).length === 0} onClick={clearCart} className="disabled:bg-gray-300 flex mx-2 text-white bg-gray-800 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-gray-900 rounded text-sm ">
                         <AiOutlineClear className='m-1' />
                         Clear Cart</button>
                 </div>

@@ -316,9 +316,9 @@ const Checkout = ({ cart, clearCart, addToCart, removeFromCart, subTotal }) => {
                     </div>
                 </div>
             </div>
-            <div className="mx-4">
+            <div className="mx-4 ">
                 <Link href={'/checkout'}>
-                    <button id='rzp-button1' disabled={disabled} onClick={() => handlePayment()} className="disabled:bg-slate-400  flex mx-2 text-white bg-slate-700 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-slate-900 rounded text-sm">
+                    <button id='rzp-button1' disabled={disabled} onClick={() => handlePayment()} className="disabled:bg-slate-400  flex mx-2 text-white bg-slate-700 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-slate-900 rounded text-sm w-[110px]">
                         <BsFillBagCheckFill className='m-1' />
                         Pay ₹{subTotal}</button>
                 </Link>
