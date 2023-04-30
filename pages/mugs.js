@@ -51,14 +51,15 @@ const Mugs = ({ products }) => {
                 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
             </Head>
             <section className="text-gray-600 body-font min-h-screen">
-                <div className="container w-[92%] px-5 py-24 mx-auto">
+                <div className="container w-[92%] px-5 py-12 mx-auto">
+                    <h1 className="text-3xl text-black font-bold font-serif text-center pb-4 border-b-2 border-gray-400">Mugs @ devwear</h1>
                     <div className="flex flex-wrap -m-4 justify-center">
                         {Object.keys(products).length === 0 && <p className='mx-5'>Sorry all the Mugs are Currently Out of Stock. New Stock Coming Soon. Stay Tuned!</p>}
                         {Object.keys(products).map((item) => {
-                            return <Link passHref={true} key={products[item]._id} href={`/product/${products[item].slug}`} className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5'>
+                            return <Link passHref={true} key={products[item]._id} href={`/product/${products[item].slug}`} className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5  '>
                                 <div className="">
                                     <div className=" relative  rounded overflow-hidden">
-                                        <img alt="mug Image" className="m-auto  h-[30vh] md:h-[36vh] block" src={products[item].img} />
+                                        <img alt="mug Image" className="m-auto  h-[20vh] md:h-[30vh] block" src={products[item].img} />
                                     </div>
                                     <div className="mt-4 text-center md:text-left">
                                         <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Mugs</h3>

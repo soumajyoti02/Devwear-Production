@@ -42,7 +42,7 @@ const MyOrder = ({ order, clearCart }) => {
         <div>
             <Head>
                 <title>Order Successful | DEVWEAR</title>
-                <meta name="description" content="Checkout page of Your Website Name" />
+                <meta name="description" content="Checkout page of Devwear" />
                 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
             </Head>
             <section className="text-gray-600 body-font overflow-hidden">
@@ -56,13 +56,13 @@ const MyOrder = ({ order, clearCart }) => {
                             <p className="text-gray-500">Your payment status is: <span className="font-semibold text-slate-700">{order.status}</span></p>
 
                             <div className="flex mb-4">
-                                <a className="flex-grow text-left py-2 text-lg px-1">Description</a>
-                                <a className="flex-grow  text-right py-2 text-lg px-1">Quantity</a>
-                                <a className="flex-grow  text-center py-2 text-lg px-1">Price</a>
+                                <a className="flex-grow text-left py-2 text-lg px-1 font-semibold">Description</a>
+                                <a className="flex-grow  text-right py-2 text-lg px-1 font-semibold">Quantity</a>
+                                <a className="flex-grow  text-center py-2 text-lg px-1 font-semibold">Price</a>
                             </div>
 
                             {Object.keys(products).map((key) => {
-                                return <div key={key} className="flex border-t border-gray-200 py-2">
+                                return <div key={key} className="flex border-t border-gray-200 py-2 hover:bg-gray-100">
                                     <span className="text-gray-500 w-[60%]">{products[key].name}({products[key].size}/{products[key].variant})</span>
                                     <span className="m-auto text-gray-900">{products[key].qty}</span>
                                     <span className="m-auto text-gray-900">{products[key].qty} X ₹{products[key].price} = ₹{products[key].qty * products[key].price}</span>
@@ -73,10 +73,10 @@ const MyOrder = ({ order, clearCart }) => {
 
                             <div className="flex flex-col mt-2 md:mt-4">
                                 <span className="title-font font-semibold text-xl md:text-2xl text-gray-900 ">SubTotal: ₹{order.amount}.00</span>
-                                <button className="flex w-36 mt-4 md:mt-5 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Track Order</button>
+                                {/* <button className="flex w-36 mt-4 md:mt-5 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Track Order</button> */}
                             </div>
                         </div>
-                        <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="/order.jpg" />
+                        <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded mt-[20px] md:mt-0" src="/orderconfirm.jpg" />
                     </div>
                 </div>
             </section >

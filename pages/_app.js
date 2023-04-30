@@ -15,6 +15,9 @@ export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(0)
 
   const router = useRouter()
+  const showFooterLogin = router.pathname !== '/login'
+  const showFooterSignup = router.pathname !== '/signup'
+  const showFooterForget = router.pathname !== '/forget'
 
   useEffect(() => {
     router.events.on('routeChangeStart', () => {
@@ -133,6 +136,6 @@ export default function App({ Component, pageProps }) {
     />
     {key && <Navbar logout={logout} user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />}
     <Component buyNow={buyNow} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
-    <Footer />
+    {showFooterLogin && showFooterSignup && showFooterForget && <Footer />}
   </>
 }

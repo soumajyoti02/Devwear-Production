@@ -214,92 +214,111 @@ const Checkout = ({ cart, clearCart, addToCart, removeFromCart, subTotal }) => {
                 theme="light"
             />
             <h1 className="font-bold text-3xl my-8 text-center">Checkout</h1>
-            <h2 className="text-xl font-semibold">1. Delivery Details</h2>
-            <div className="mx-auto flex flex-wrap">
-                <div className="px-2 w-1/2">
-                    <div className=" mb-4">
-                        <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-                        <input onChange={handleChange} value={name} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                    </div>
-                </div>
-                <div className="px-2 w-1/2">
-                    <div className=" mb-4">
-                        <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-
-                        {user && user.token ? <input value={user.email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly={true} /> : <input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />}
-
-
-                    </div>
-                </div>
-            </div>
-            <div className="px-2 w-full">
-                <div className=" mb-4">
-                    <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
-                    <textarea onChange={handleChange} value={address} id="address" name="address" cols={'30'} rows={'2'} className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" ></textarea>
-                </div>
-            </div>
-
-            <div className="mx-auto flex flex-wrap">
-                <div className="px-2 w-1/2">
-                    <div className=" mb-4">
-                        <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone Number</label>
-                        <input onChange={handleChange} value={phone} type="phone" id="phone" name="phone" placeholder='10 Digit Number' className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out md:placeholder:text-base placeholder:text-sm" />
-                    </div>
-                </div>
-                <div className="px-2 w-1/2">
-                    <div className=" mb-4">
-                        <label htmlFor="pincode" className="leading-7 text-sm text-gray-600">PinCode</label>
-                        <input onChange={handleChange} value={pincode} type="text" id="pincode" name="pincode" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="mx-auto flex flex-wrap">
-                <div className="px-2 w-1/2">
-                    <div className=" mb-4">
-                        <label htmlFor="state" className="leading-7 text-sm text-gray-600">State</label>
-                        <input onChange={handleChange} value={state} type="text" id="state" name="state" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                    </div>
-                </div>
-                <div className="px-2 w-1/2">
-
-
-                    <div className=" mb-4">
-                        <label htmlFor="city" className="leading-7 text-sm text-gray-600">District</label>
-                        <input onChange={handleChange} value={city} type="text" id="city" name="city" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                    </div>
-
-                </div>
-            </div>
-
-            <h2 className="text-xl font-semibold">2. Review Cart Items</h2>
-            <div className="sideCart bg-pink-100 p-5 my-4 pl-8 md:pl-14">
-
-                <ol className="list-decimal font-semibold">
-                    {/* Object.keys(cart) returns an array of all the keys in the cart object. */}
-
-                    {Object.keys(cart).length == 0 && <div className='my-4 font-normal'>Your Cart is Empty</div>}
-
-                    {Object.keys(cart).map((k) => {
-                        return <li key={k} className="">
-                            <div className='item flex my-5'>
-                                <div className=" font-semibold">{cart[k].name} ({cart[k].size}/{cart[k].constiant})</div>
-                                <div className="flex font-semibold justify-center items-center w-1/3 text-lg">
-                                    {/* Here k is slug */}
-
-                                    <AiFillMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].constiant) }} className='cursor-pointer text-pink-500' />
-                                    <span className="mx-2 text-sm">{cart[k].qty}</span>
-                                    <AiFillPlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].constiant) }} className='cursor-pointer text-pink-500' />
-                                </div>
+            <div className="flex flex-col md:flex-row  justify-evenly ">
+                <div className="md:w-[620px]">
+                    <h2 className="text-xl font-semibold">1. Delivery Details</h2>
+                    <div className="mx-auto flex flex-wrap">
+                        <div className="px-2 w-1/2">
+                            <div className=" mb-4">
+                                <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
+                                <input onChange={handleChange} value={name} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             </div>
-                        </li>
-                    })}
-                </ol>
-                <span className="total font-bold">SubTotal: ₹{subTotal}</span>
+                        </div>
+                        <div className="px-2 w-1/2">
+                            <div className=" mb-4">
+                                <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
+
+                                {user && user.token ? <input value={user.email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly={true} /> : <input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />}
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="px-2 w-full">
+                        <div className=" mb-4">
+                            <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
+                            <textarea onChange={handleChange} value={address} id="address" name="address" cols={'30'} rows={'2'} className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" ></textarea>
+                        </div>
+                    </div>
+
+                    <div className="mx-auto flex flex-wrap">
+                        <div className="px-2 w-1/2">
+                            <div className=" mb-4">
+                                <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone Number</label>
+                                <input onChange={handleChange} value={phone} type="phone" id="phone" name="phone" placeholder='10 Digit Number' className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out md:placeholder:text-base placeholder:text-sm" />
+                            </div>
+                        </div>
+                        <div className="px-2 w-1/2">
+                            <div className=" mb-4">
+                                <label htmlFor="pincode" className="leading-7 text-sm text-gray-600">PinCode</label>
+                                <input onChange={handleChange} value={pincode} type="text" id="pincode" name="pincode" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mx-auto flex flex-wrap">
+                        <div className="px-2 w-1/2">
+                            <div className=" mb-4">
+                                <label htmlFor="state" className="leading-7 text-sm text-gray-600">State</label>
+                                <input onChange={handleChange} value={state} type="text" id="state" name="state" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            </div>
+                        </div>
+                        <div className="px-2 w-1/2">
+
+
+                            <div className=" mb-4">
+                                <label htmlFor="city" className="leading-7 text-sm text-gray-600">District</label>
+                                <input onChange={handleChange} value={city} type="text" id="city" name="city" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div className="hidden md:block w-1 border-l-[0.5px] border-gray-400"></div>
+
+                {/* SIDECART VIEW */}
+                <div className="md:w-[45%] ">
+                    <h2 className="text-xl font-semibold">2. Review Cart Items</h2>
+                    <div className="sideCart bg-gray-100 p-5 my-4 pl-8 md:pl-14 rounded-2xl md:w-[90%] md:m-auto md:mt-[1.3125rem] md:h-[85%]">
+
+                        <div className="md:h-[78%] md:pb-2 overflow-auto">
+                            <ol className="list-decimal font-semibold">
+                                {/* Object.keys(cart) returns an array of all the keys in the cart object. */}
+
+                                {Object.keys(cart).length == 0 && <div className='my-4 font-normal'>Your Cart is Empty</div>}
+
+                                {Object.keys(cart).map((k) => {
+                                    return <li key={k} className="">
+                                        <div className='item flex my-5 justify-between md:justify-normal'>
+                                            {cart[k].size && cart[k].variant && <div className=" font-semibold w-[190px] md:w-[320px]">{cart[k].name} ({cart[k].size}/{cart[k].variant})</div>}
+                                            {!cart[k].size && !cart[k].variant && <div className=" font-semibold w-[190px] md:w-[320px]">{cart[k].name} </div>}
+                                            <div className=" flex font-semibold justify-center items-center w-1/3 md:w-[17.333%] text-lg">
+                                                {/* Here k is slug */}
+
+                                                <div className=" w-[4.5rem] md:w-[8rem] h-8 bg-gray-200 rounded-3xl flex justify-between ">
+                                                    <button onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className="w-[35%] h-full bg-gray-300 hover:bg-gray-400 rounded-3xl text-center">-</button>
+
+                                                    <span className="mt-[0.35rem] text-sm">{cart[k].qty}</span>
+
+                                                    <button onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className="w-[35%] h-full bg-gray-300 hover:bg-gray-400 rounded-3xl text-center"> + </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                })}
+                            </ol>
+                        </div>
+                        <div className="border-t-2 border-black"></div>
+                        <div className="total bg-gray-300 md:w-[40%] p-3 rounded-xl my-3">
+                            <p className="font-bold text-center">SubTotal: ₹{subTotal}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="mx-4">
                 <Link href={'/checkout'}>
-                    <button id='rzp-button1' disabled={disabled} onClick={() => handlePayment()} className="disabled:bg-pink-300  flex mx-2 text-white bg-pink-500 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-pink-600 rounded text-sm">
+                    <button id='rzp-button1' disabled={disabled} onClick={() => handlePayment()} className="disabled:bg-slate-400  flex mx-2 text-white bg-slate-700 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-slate-900 rounded text-sm">
                         <BsFillBagCheckFill className='m-1' />
                         Pay ₹{subTotal}</button>
                 </Link>

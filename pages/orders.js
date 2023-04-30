@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
+import { BsBoxArrowUpRight } from 'react-icons/bs';
 
 const Orders = () => {
 
@@ -45,38 +46,51 @@ const Orders = () => {
                 <div className="flex flex-col">
                     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                            <div className="overflow-hidden">
-                                <h1 className="font-bold text-2xl text-center p-8">My Orders</h1>
-                                <table className="min-w-full text-left text-sm font-light">
-                                    <thead className="border-b font-medium dark:border-neutral-500">
-                                        <tr>
-                                            <th scope="col" className="px-6 py-4">Order Id</th>
-                                            <th scope="col" className="px-6 py-4">Email</th>
-                                            <th scope="col" className="px-6 py-4">Amount</th>
-                                            <th scope="col" className="px-6 py-4">Details</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                            <div className="overflow-x-auto">
+                                <h1 className="font-semibold text-2xl text-center pt-8">Order History</h1>
+                                <p className="text-gray-600 text-center">Check the status of recent orders</p>
 
-                                        {orders.map((item) => {
-                                            return <tr
-                                                key={item._id} className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
-                                                <td className="whitespace-nowrap px-6 py-4 font-medium">{item.orderId}</td>
-                                                <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
-                                                <td className="whitespace-nowrap px-6 py-4">{item.amount}</td>
-                                                <td className="whitespace-nowrap px-6 py-4">
-                                                    <Link href={`/order/?id=${item._id}`}>Details</Link>
-                                                </td>
-                                            </tr>
-                                        })}
-                                    </tbody>
-                                </table>
+                                {/* FOR LARGE SCREEN */}
+
+                                <div className="md:block hidden">
+                                    <div className="flex justify-evenly items-center bg-gray-400 h-16 mt-10">
+                                        <p className="w-[20%]">Order Id</p>
+                                        <p className="w-[20%]">Price</p>
+                                        <p className="w-[20%]">Email</p>
+                                        <p className="w-[20%]">Info</p>
+                                    </div>
+
+                                    {orders.map((item) => {
+                                        return <div
+                                            key={item._id} className="flex justify-evenly items-center mt-4 pb-5 border-b-2 border-gray-400 ">
+                                            <p className="w-[20%]">{item.orderId}</p>
+                                            <p className="w-[20%]">₹{item.amount}</p>
+                                            <p className="w-[20%]">{item.email}</p>
+                                            <p className="w-[20%] hover:text-blue-800">
+                                                <Link href={`/order/?id=${item._id}`}>Details</Link>
+                                            </p>
+                                        </div>
+                                    })}
+                                </div>
+
+                                {/* FOR MOBILE VIEW */}
+
+                                {orders.map((item) => {
+                                    return <div
+                                        key={item._id} className="md:hidden mt-5 flex justify-between bg-gray-200  rounded-xl ">
+                                        <div className="w-[65%]  p-3 flex flex-col justify-center ml-2 space-y-1">
+                                            <p className="text-base">{item.orderId}</p>
+                                            <p className="text-gray-800">₹{item.amount}</p>
+                                        </div>
+                                        <Link href={`/order/?id=${item._id}`} className="w-[25%]  flex justify-center items-center border-l-2 border-gray-400 bg-violet-200 font-semibold text-lg rounded-xl"><BsBoxArrowUpRight className='' /></Link>
+                                    </div>
+                                })}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

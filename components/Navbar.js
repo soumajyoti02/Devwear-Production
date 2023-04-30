@@ -11,6 +11,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const [sidebar, setSidebar] = useState(false);
     const [active, setActive] = useState(false);
     const [dropdownToggle, setDropdownToggle] = useState('hidden');
+    const [hamburgerButton, setHamburgerButton] = useState(true);
 
     const router = useRouter()
 
@@ -36,10 +37,12 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
     const toggleCart = () => {
         setSidebar(!sidebar)
+        console.log(sidebar)
     }
 
     const handleDropDown = () => {
         dropdownToggle === '' ? setDropdownToggle('hidden') : setDropdownToggle('')
+        dropdownToggle === '' ? setHamburgerButton(true) : setHamburgerButton(false)
         console.log("Drop")
     }
 
@@ -49,20 +52,17 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         <>
 
             {!sidebar && <span onMouseOver={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)} className='fixed right-14 top-[1.8rem] md:right-20 md:top-[1.6rem] z-30 cursor-pointer'>
-                {dropdown && <div className="absolute right-[-1rem] top-3 md:top-4 mt-2 w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none md:py-5 py-3 z-30" aria-orientation="vertical" >
+                {dropdown && <div className="absolute right-[-1rem] top-3 md:top-[1.2rem] mt-2 w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none md:py-5 py-3 z-30" aria-orientation="vertical" >
                     <ul className="py-1">
-                        <Link href={'/myaccount'}><li className="text-gray-700 block px-4 py-2 text-sm hover:bg-pink-100" id="menu-item-0">Account</li></Link>
-                        <Link href={'/orders'}><li className="text-gray-700 block px-4 py-2 text-sm hover:bg-pink-100" id="menu-item-1">My Orders</li></Link>
-                        <li onClick={logout} className="text-gray-700 block px-4 py-2 text-sm hover:bg-pink-100" id="menu-item-3">Sign out</li>
+                        <Link href={'/myaccount'}><li className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" id="menu-item-0">Account</li></Link>
+                        <Link href={'/orders'}><li className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" id="menu-item-1">My Orders</li></Link>
+                        <li onClick={logout} className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" id="menu-item-3">Sign out</li>
                     </ul>
                 </div>}
-                <span onMouseOver={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)}>
-                    {user.value && <MdAccountCircle className='z-30 bg-transparent text-2xl md:text-3xl absolute right-[4.5rem] md:right-16  md:-top-1 top-[-0.30rem]' />}
-                </span>
             </span>}
 
 
-            <nav className={`z-20 ${active ? 'bg-slate-50' : 'bg-yellow-100'} shadow-lg sticky top-0 z-10 transition duration-300`}>
+            <nav className={`z-20 ${active ? 'bg-gray-100' : 'bg-gray-100'} shadow-lg sticky top-0 z-10 transition duration-300`}>
                 <div className="max-w-[85rem] mx-auto px-4">
                     <div className="flex justify-between">
                         <div className="flex space-x-7 justify-between w-[60%]">
@@ -74,21 +74,21 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                             </div>
                             {/* <!-- Primary Navbar items --> */}
                             <div className="hidden md:flex items-center space-x-1 ">
-                                <Link href="/tshirts" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-green-500 transition duration-300 `}>TShirts</Link>
-                                <Link href="/hoodies" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-green-500 transition duration-300 `}>Hoodies</Link>
-                                <Link href="/mugs" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-green-500 transition duration-300 `}>Mugs</Link>
-                                <Link href="/stickers" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-green-500 transition duration-300 `}>Stickers</Link>
+                                <Link href="/tshirts" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-orange-800 transition duration-300 `}>TShirts</Link>
+                                <Link href="/hoodies" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-orange-800 transition duration-300 `}>Hoodies</Link>
+                                <Link href="/mugs" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-orange-800 transition duration-300 `}>Mugs</Link>
+                                <Link href="/stickers" className={`py-4 px-2  ${!active ? 'text-black' : 'text-black'} text-lg font-semibold hover:text-orange-800 transition duration-300 `}>Stickers</Link>
                             </div>
                         </div>
-                        {/* <!-- Secondary Navbar items --> */}
+                        {/* <!-- Login Button on Large Screen --> */}
                         <div className="hidden md:flex items-center space-x-3 md:mr-8">
                             {!user.value && <Link href={'/login'}><button className="bg-orange-400 text-white px-4 py-2 rounded-full font-bold text-lg focus:outline-none hover:scale-105 active:scale-95 transition duration-300 ease-in-out">Login</button></Link>}
 
                         </div>
-                        {/* <!-- Mobile menu button --> */}
+                        {/* <!-- Mobile menu hamburger button --> */}
                         <div className="md:hidden flex items-center">
-                            <button className="outline-none mobile-menu-button" onClick={handleDropDown}>
-                                <svg className={` w-6 h-6 ${!active ? 'text-black' : 'text-black'} hover:text-green-500 transition duration-300 mt-[0.38rem]`}
+                            <button className="outline-none mobile-menu-button " onClick={handleDropDown}>
+                                {hamburgerButton && <svg className={` w-6 h-6 ${!active ? 'text-black' : 'text-black'} hover:text-green-500 transition duration-300 mt-[0.38rem]`}
                                     x-show="!showMenu"
                                     fill="none"
                                     stroke-linecap="round"
@@ -98,29 +98,32 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                                     stroke="currentColor"
                                 >
                                     <path d="M4 6h16M4 12h16M4 18h16"></path>
-                                </svg>
+                                </svg>}
+
+                                {!hamburgerButton && <svg className="h-6 w-6 mt-[0.38rem]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>}
                             </button>
                         </div>
 
                         <div className="cursor-pointer cart items-center absolute right-0 top-[1.35rem] mx-5 flex space-x-2 md:space-x-6 h-10">
+                            <span onMouseOver={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)}>
+                                {user.value && <MdAccountCircle className='z-40 bg-transparent text-2xl md:text-3xl absolute right-[6rem] md:right-[7rem]  md:top-[0.09rem] top-[0.1rem]' />}
+                            </span>
                             <BsCart4 onClick={toggleCart} className='text-2xl md:text-3xl absolute right-12 top-0 bg-transparent' />
                         </div>
 
 
                     </div>
                 </div>
-                {/* <!-- mobile menu --> */}
-                <div className={`${dropdownToggle} mobile-menu z-10 absolute top-16 backdrop-blur-3xl w-screen transition-all lg:hidden`}>
+                {/* <!-- mobile menu dropdown --> */}
+                <div className={`${dropdownToggle} mobile-menu z-10 absolute top-16 backdrop-blur-3xl bg-gray-100 w-screen transition-all lg:hidden rounded-b-3xl overflow-hidden`}>
                     {console.log(dropdownToggle)}
                     <ul className=" flex flex-col items-center pb-5 transition-all">
-                        <li className="active"><a href="#" className="block  px-2 py-4 text-black text-lg font-semibold">TShirts</a></li>
-
-                        <li><a href="#services" className="block  px-2 py-4  transition duration-300 text-black text-xl font-semibold">Hoodies</a></li>
-
-                        <li><a href="#about" className="block  px-2 py-4  transition duration-300 text-black text-xl font-semibold">Mugs</a></li>
-
-
-                        <li><a href="#contact" className="block  px-2 py-4  transition duration-300 text-black text-xl font-semibold">Stickers</a></li>
+                        <Link href="/tshirts" className={`py-4 px-2  text-slate-900 text-lg font-semibold hover:text-green-500 transition duration-300 `}>TShirts</Link>
+                        <Link href="/hoodies" className={`py-4 px-2  text-slate-900 text-lg font-semibold hover:text-green-500 transition duration-300 `}>Hoodies</Link>
+                        <Link href="/mugs" className={`py-4 px-2  text-slate-900 text-lg font-semibold hover:text-green-500 transition duration-300 `}>Mugs</Link>
+                        <Link href="/stickers" className={`py-4 px-2  text-slate-900 text-lg font-semibold hover:text-green-500 transition duration-300 `}>Stickers</Link>
 
                         <li>
                             {!user.value && <Link href={'/login'}><button className="bg-orange-400 text-white px-4 py-2 rounded-full font-bold text-xl focus:outline-none hover:scale-105 active:scale-95 transition duration-300 ease-in-out w-[90vw]">Login</button></Link>}
@@ -130,10 +133,22 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
             </nav >
 
-            <div ref={ref} className={`sideCart z-20 h-[100vh] w-80 absolute overflow-y-scroll top-0 bg-pink-100 p-10 transform transition-transform ${sidebar ? 'right-0' : '-right-96'}`}>
+
+            {/* SIDE CART */}
+
+            <div ref={ref} className={`sideCart z-20 h-[100vh] w-80 absolute overflow-y-scroll top-0 bg-gray-200 p-10 transform transition-transform ${sidebar ? 'right-0' : '-right-96'} shadow-2xl`}>
                 <h2 className="font-bold text-xl">Shopping Cart</h2>
+                {/* Underline */}
+                <div className="w-1/2 h-[1px] bg-black mt-[10px] ml-[8px]">
+                </div>
+
                 <span onClick={toggleCart} className="cursor-pointer absolute top-5 right-2  text-2xl text-pink-600">
-                    <AiFillCloseCircle />
+
+                    <button type="button" className="bg-red-500 rounded-md p-2 inline-flex items-center justify-center text-gray-100  hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-300">
+                        <svg className="h-4 md:h-6 w-4 md:w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </span>
                 <ol className="list-decimal font-semibold">
                     {/* Object.keys(cart) returns an array of all the keys in the cart object. */}
@@ -147,22 +162,30 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                                 <div className="flex font-semibold justify-center items-center w-1/3 text-lg">
                                     {/* Here k is slug */}
 
-                                    <AiFillMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className='cursor-pointer text-pink-500' />
-                                    <span className="mx-2 text-sm">{cart[k].qty}</span>
-                                    <AiFillPlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className='cursor-pointer text-pink-500' />
+                                    <div className="w-[4.5rem] h-8 bg-gray-200 rounded-3xl flex justify-between ">
+                                        <button onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className="w-[35%] h-full bg-gray-300 hover:bg-gray-400 rounded-3xl text-center">-</button>
+
+                                        <span className="mt-[0.35rem] text-sm">{cart[k].qty}</span>
+
+                                        <button onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className="w-[35%] h-full bg-gray-300 hover:bg-gray-400 rounded-3xl text-center"> + </button>
+                                    </div>
+
                                 </div>
                             </div>
                         </li>
                     })}
                 </ol>
-                <div className="total font-bold my-3">SubTotal: ₹{subTotal}</div>
+                <div className="border-t-2 border-black"></div>
+                <div className="total bg-gray-300  p-3 rounded-xl my-3">
+                    <p className="font-bold">SubTotal: ₹{subTotal}</p>
+                </div>
                 <div className="flex space-x-3">
                     <Link href={'/checkout'}>
-                        <button disabled={Object.keys(cart).length === 0} className=" disabled:bg-pink-300 flex mx-2 text-white bg-pink-500 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-pink-600 rounded text-sm">
+                        <button disabled={Object.keys(cart).length === 0} className=" disabled:bg-gray-300 flex mx-2 text-white bg-gray-800 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-gray-900 rounded text-sm">
                             <BsFillBagCheckFill className='m-1' />
                             CheckOut</button>
                     </Link>
-                    <button disabled={Object.keys(cart).length === 0} onClick={clearCart} className="disabled:bg-pink-300 flex mx-2 text-white bg-pink-500 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-pink-600 rounded text-sm">
+                    <button disabled={Object.keys(cart).length === 0} onClick={clearCart} className="disabled:bg-gray-300 flex mx-2 text-white bg-gray-800 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-gray-900 rounded text-sm">
                         <AiOutlineClear className='m-1' />
                         Clear Cart</button>
                 </div>

@@ -51,7 +51,8 @@ const Tshirts = ({ products }) => {
                 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
             </Head>
             <section className="text-gray-600 body-font min-h-screen">
-                <div className="container w-[92%] px-5 py-24 mx-auto">
+                <div className="container w-[92%] px-5 py-12 mx-auto">
+                    <h1 className="text-3xl text-black font-bold font-serif text-center pb-4 border-b-2 border-gray-400">TShirts @ devwear</h1>
                     <div className="flex flex-wrap -m-4 justify-center">
                         {Object.keys(products).length === 0 && <p className='mx-5'>Sorry all the TShirts are Currently Out of Stock. New Stock Coming Soon. Stay Tuned!</p>}
 
