@@ -17,7 +17,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
     useEffect(() => {
         Object.keys(cart).length !== 0 && setSidebar(true)
-        let exempted = [`/checkout`, `/order`, `/orders`, `/myaccount`]
+        let exempted = [`/checkout`, `/order`, `/orders`, `/myaccount`, `/`, `/tshirts`, `/hoodies`, `/mugs`, `/stickers`]
         if (exempted.includes(router.pathname)) {
             setSidebar(false)
         }
@@ -43,14 +43,12 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const handleDropDown = () => {
         dropdownToggle === '' ? setDropdownToggle('hidden') : setDropdownToggle('')
         dropdownToggle === '' ? setHamburgerButton(true) : setHamburgerButton(false)
-        console.log("Drop")
     }
 
     const ref = useRef()
 
     return (
         <>
-
             {!sidebar && <span onMouseOver={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)} className='fixed right-14 top-[1.8rem] md:right-20 md:top-[1.6rem] z-30 cursor-pointer'>
                 {dropdown && <div className="absolute right-[-1rem] top-3 md:top-[1.2rem] mt-2 w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none md:py-5 py-3 z-30" aria-orientation="vertical" >
                     <ul className="py-1">
@@ -136,7 +134,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
             {/* SIDE CART */}
 
-            <div ref={ref} className={`sideCart z-20 h-[100vh] w-80 absolute overflow-y-scroll top-0 bg-gray-200 p-10 transform transition-transform ${sidebar ? 'right-0' : '-right-96'} shadow-2xl`}>
+            <div ref={ref} className={`sideCart z-20 h-[100vh] w-80 absolute overflow-y-scroll top-0 bg-gray-200 p-10 transform transition-transform ${sidebar ? 'right-0' : 'hidden'} shadow-2xl`}>
                 <h2 className="font-bold text-xl">Shopping Cart</h2>
                 {/* Underline */}
                 <div className="w-1/2 h-[1px] bg-black mt-[10px] ml-[8px]">

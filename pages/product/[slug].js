@@ -126,7 +126,9 @@ const Post = ({ buyNow, addToCart, product, variants, error }) => {
                         <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto px-24 object-cover object-top rounded" src={product.img} />
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                             <h2 className="text-sm title-font text-gray-500 tracking-widest">DEVWEAR</h2>
-                            <h1 className="text-gray-900 text-3xl title-font font-semibold mb-1">{product.title} ({product.size}/{product.color})</h1>
+                            {product.size && product.color && <h1 className="text-gray-900 text-3xl title-font font-semibold mb-1">{product.title} ({product.size}/{product.color})</h1>}
+                            {!product.size && !product.color && <h1 className="text-gray-900 text-3xl title-font font-semibold mb-1">{product.title} </h1>}
+
                             <div className="flex mb-4">
 
 
@@ -168,6 +170,7 @@ const Post = ({ buyNow, addToCart, product, variants, error }) => {
 
 
                             </div>
+
                             <p className="leading-relaxed">{product.desc}</p>
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                 <div className="flex">
@@ -206,9 +209,9 @@ const Post = ({ buyNow, addToCart, product, variants, error }) => {
                                 {product.availableQty > 0 && <span className="title-font font-medium text-2xl text-gray-900">₹{product.price}</span>}
                                 <div className="flex mt-5 md:mt-0">
 
-                                    <button disabled={product.availableQty <= 0} onClick={() => buyNow(slug, 1, product.price, product.title, size, color)} className="disabled:bg-pink-300 flex  md:ml-14 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Buy Now</button>
+                                    <button disabled={product.availableQty <= 0} onClick={() => buyNow(slug, 1, product.price, product.title, size, color)} className="disabled:bg-slate-400  flex mx-2 text-white bg-slate-700 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-slate-900 rounded text-sm md:ml-5">Buy Now</button>
 
-                                    <button disabled={product.availableQty <= 0} onClick={() => { addToCart(slug, 1, product.price, product.title, size, color) }} className="disabled:bg-pink-300 flex ml-4 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Add to Cart</button>
+                                    <button disabled={product.availableQty <= 0} onClick={() => { addToCart(slug, 1, product.price, product.title, size, color) }} className="disabled:bg-slate-400  flex mx-2 text-white bg-slate-700 border-0 py-2 px-[0.7rem] focus:outline-none hover:bg-slate-900 rounded text-sm">Add to Cart</button>
 
                                     {/* <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                         <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -221,7 +224,7 @@ const Post = ({ buyNow, addToCart, product, variants, error }) => {
 
                             <div className="pin mt-6 w-fit">
                                 <input onChange={onChangePin} type="text" placeholder='Enter Pincode' className='placeholder:outline-none p-2 outline-none text-slate-700 border-2 rounded-l-xl h-[2.7rem]' />
-                                <button onClick={checkServiceability} className='rounded-r-xl bg-pink-500 text-white w-20 h-[2.7rem] font-sans hover:bg-pink-600'>Check</button>
+                                <button onClick={checkServiceability} className='rounded-r-xl bg-green-500 text-white w-20 h-[2.7rem] font-sans hover:bg-green-700'>Check</button>
                             </div>
                             {(service && service != null) && <div className="text-green-700 text-sm mt-3">
                                 Yay! This Pincode is Servicable

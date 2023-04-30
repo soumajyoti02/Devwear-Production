@@ -52,8 +52,8 @@ const Tshirts = ({ products }) => {
             </Head>
             <section className="text-gray-600 body-font min-h-screen">
                 <div className="container w-[92%] px-5 py-12 mx-auto">
-                    <h1 className="text-3xl text-black font-bold font-serif text-center pb-4 border-b-2 border-gray-400">TShirts @ devwear</h1>
-                    <div className="flex flex-wrap -m-4 justify-center">
+                    <h1 className="text-xl md:text-2xl text-black font-bold font-serif text-center pb-4 border-b-[1px] border-gray-400">Upgrade Your Wardrobe with Our Trendy T-Shirts</h1>
+                    <div className="flex flex-wrap -m-4 justify-center mt-10">
                         {Object.keys(products).length === 0 && <p className='mx-5'>Sorry all the TShirts are Currently Out of Stock. New Stock Coming Soon. Stay Tuned!</p>}
 
                         {Object.keys(products).map((item) => {

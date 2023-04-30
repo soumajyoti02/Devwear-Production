@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Carousel from '@/components/Carousel'
 import cardstyle from '../styles/card.module.css'
+import Link from 'next/link'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -90,15 +91,15 @@ export default function Home() {
 
         <section className="offer_section h-full  bg-slate-50 w-screen mt-5">
           <div className="flex flex-col md:flex-row flex-wrap md:w-[90%] gap-5 justify-center md:justify-evenly items-center md:m-auto">
-            <div className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
+            <Link href={`/tshirts`} className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
               <img src="/downoffer1.jpg" alt="" />
-            </div>
-            <div className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
+            </Link>
+            <Link href={`/tshirts`} className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
               <img src="/downoffer2.jpg" alt="" />
-            </div>
-            <div className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
+            </Link>
+            <Link href={`/tshirts`} className="flex w-[95%] md:w-[32%] justify-center items-center rounded-3xl overflow-hidden transition-all  lg:hover:-translate-y-3 cursor-pointer">
               <img src="/downoffer3.jpg" alt="" />
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -111,47 +112,47 @@ export default function Home() {
 
 
             {offerPicTshirt.map((pic) => {
-              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+              return <Link href={`/tshirts`} key={pic} className={`${cardstyle.card} mt-4`}>
                 <div className={`${cardstyle.card_image} overflow-hidden `}>
                   <img src={`${pic}`} alt="" className='bg-cover' />
                 </div>
                 <div className={`${cardstyle.category}`}> TShirt </div>
                 <div className={`${cardstyle.heading}`}> Get noticed in this must-have TShirt!
                 </div>
-              </div>
+              </Link>
 
             })}
             {offerPicHood.map((pic) => {
-              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+              return <Link href={`/hoodies`} key={pic} className={`${cardstyle.card} mt-4`}>
                 <div className={`${cardstyle.card_image} overflow-hidden `}>
                   <img src={`${pic}`} alt="" className='bg-cover' />
                 </div>
                 <div className={`${cardstyle.category}`}> Hoodie </div>
                 <div className={`${cardstyle.heading}`}> Get noticed in this must-have Hoodie!
                 </div>
-              </div>
+              </Link>
 
             })}
             {offerPicMug.map((pic) => {
-              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+              return <Link href={`/mugs`} key={pic} className={`${cardstyle.card} mt-4`}>
                 <div className={`${cardstyle.card_image} overflow-hidden `}>
                   <img src={`${pic}`} alt="" className='bg-cover' />
                 </div>
                 <div className={`${cardstyle.category}`}> Mugs </div>
                 <div className={`${cardstyle.heading}`}> Get noticed in this must-have Mugs!
                 </div>
-              </div>
+              </Link>
 
             })}
             {offerPicSticker.map((pic) => {
-              return <div key={pic} className={`${cardstyle.card} mt-4`}>
+              return <Link href={`/stickers`} key={pic} className={`${cardstyle.card} mt-4`}>
                 <div className={`${cardstyle.card_image} overflow-hidden `}>
                   <img src={`${pic}`} alt="" className='bg-cover' />
                 </div>
                 <div className={`${cardstyle.category}`}> Stickers </div>
                 <div className={`${cardstyle.heading}`}> Get noticed in this must-have Sticker!
                 </div>
-              </div>
+              </Link>
 
             })}
 
@@ -160,12 +161,12 @@ export default function Home() {
 
         <section className="down_Offer_Section w-screen bg-slate-100 mb-10">
           <div className="w-[90%] m-auto pt-10 ">
-            <div className="md:hidden block rounded-3xl overflow-hidden">
+            <Link href={`/tshirts`} className="md:hidden block rounded-3xl overflow-hidden">
               <img src="/downoffer5.jpg" alt="" className='h-[30vh]' />
-            </div>
-            <div className="md:block hidden rounded-3xl overflow-hidden">
+            </Link>
+            <Link href={`/tshirts`} className="md:block hidden rounded-3xl overflow-hidden">
               <img src="/b3.jpg" alt="" className='w-screen' />
-            </div>
+            </Link>
           </div>
         </section>
 

@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }) {
   const [subTotal, setSubtotal] = useState(0)
   const [user, setUser] = useState({ value: null })
   const [key, setKey] = useState()
+  const [sidebar, setSidebar] = useState(false);
 
   const [progress, setProgress] = useState(0)
 
